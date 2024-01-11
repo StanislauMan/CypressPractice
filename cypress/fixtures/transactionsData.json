@@ -1,0 +1,27 @@
+{
+    "userName": [
+        "---Your Name---",
+        "Hermoine Granger",
+        "Harry Potter",
+        "Ron Weasly",
+        "Albus Dumbledore",
+        "Neville Longbottom"
+    ],
+    "data": [
+        {
+            "accountNumber": "1001",
+            "balance": 5096,
+            "currency": "Dollar"
+        },
+        {
+            "accountNumber": "1002",
+            "balance": 0,
+            "currency": "Pound"
+        },
+        {
+            "accountNumber": "1003",
+            "balance": 0,
+            "currency": "Rupee"
+        }
+    ]
+}
