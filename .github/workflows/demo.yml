@@ -27,4 +27,4 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Docker start
-        run: docker run -t -it -v ${PWD}:/e2e -w /e2e --rm  cypress/included:13.6.2 -s cypress/e2e/1stResource.spec.cy.js -b chrome
+        run: docker run -v ${PWD}:/e2e -w /e2e --rm  cypress/included:13.6.2 -s cypress/e2e/1stResource.spec.cy.js -b chrome
