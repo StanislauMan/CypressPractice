@@ -33,13 +33,13 @@ jobs:
         uses: EnricoMi/publish-unit-test-result-action@v1
         if: always()
         with:
-          files: "reports/*.xml"
+          files: "results/*.xml"
 
       - name: Create test summary
         uses: test-summary/action@v2
         if: always()
         with:
-          paths: reports/*.xml
+          paths: results/*.xml
 
       - name: Artifacts (screenshots) upload
         uses: actions/upload-artifact@v4
