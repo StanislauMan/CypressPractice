@@ -1,0 +1,29 @@
+name: Demo CI
+
+on: workflow_dispatch
+
+jobs:
+  run-test:
+    name: 'Run tests'
+    runs-on: ubuntu-latest
+
+    steps: 
+      - name: Git clone
+      uses: actions/checkout@v4
+
+      - name: User Node.js 18.16.0
+      uses: actions/setup-node@v4
+      with:
+        node-version: 18.16.0
+
+      - name: NPM install
+      run: npm ci
+
+      - name: Docker login
+      uses: docker/login-action@v3
+      with:
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Docker start
+      run: docker run -it -v ${PWD}:/e2e -w /e2e --rm  cypress/included:13.6.2 -s cypress/e2e/1stResource.spec.cy.js -b chrome
