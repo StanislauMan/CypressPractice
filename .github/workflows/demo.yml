@@ -28,3 +28,16 @@ jobs:
 
       - name: Docker start
         run: docker run -v ${PWD}:/e2e -w /e2e --rm  cypress/included:13.6.2 -s cypress/e2e -b chrome
+
+      - uses: actions/upload-artifact@v4
+        # add the line below to store screenshots only on failures
+        # if: failure()
+        with:
+          name: cypress-screenshots
+          path: cypress/screenshots
+          if-no-files-found: ignore # 'warn' or 'error' are also available, defaults to `warn`
+      - uses: actions/upload-artifact@v4
+        with:
+          name: cypress-videos
+          path: cypress/videos
+          if-no-files-found: ignore # 'warn' or 'error' are also available, defaults to `warn`
