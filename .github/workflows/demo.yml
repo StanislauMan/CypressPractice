@@ -33,7 +33,7 @@ jobs:
         uses: test-summary/action@v2
         if: always()
         with:
-          paths: reports/*.xml
+          paths: "reports/*.xml"
 
       - name: Artifacts (screenshots) upload
         uses: actions/upload-artifact@v4
