@@ -27,7 +27,7 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Docker start
-        run: docker run -v ${PWD}:/e2e -w /e2e --rm  cypress/included:13.6.2 -s cypress/e2e -b chrome
+        run: docker run -v ${PWD}:/e2e -w /e2e --rm  cypress/included:13.6.2 -s cypress/e2e/2ndResource.spec.cy.js -b chrome
 
       - name: Artifacts (screenshots) upload
         uses: actions/upload-artifact@v4
@@ -35,12 +35,12 @@ jobs:
         # if: failure()
         with:
           name: cypress-screenshots
-          path: ./cypress/screenshots
+          path: ././cypress/screenshots
           if-no-files-found: ignore # 'warn' or 'error' are also available, defaults to `warn`
 
       - name: Artifacts (videos) upload
         uses: actions/upload-artifact@v4
         with:
           name: cypress-videos
-          path: ./cypress/videos
+          path: ././cypress/videos
           if-no-files-found: ignore # 'warn' or 'error' are also available, defaults to `warn`
