@@ -1,6 +1,6 @@
 ///<reference types='cypress' />
 
-import main from "../fixtures/main.json"
+import main from "../../fixtures/main.json"
 
 describe('2nd resource', () => {
 

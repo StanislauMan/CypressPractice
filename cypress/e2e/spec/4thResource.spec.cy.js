@@ -1,10 +1,10 @@
 ///<reference types='cypress' />
 
-import CustomerLoginPage from "../pageObjects/CustomerLoginPage"
-import HomePage from "../pageObjects/HomePage"
-import WelcomePage from "../pageObjects/WelcomePage"
-import main from "../fixtures/main.json"
-import transactionsData from "../fixtures/transactionsData.json"
+import CustomerLoginPage from "../../pageObjects/CustomerLoginPage"
+import HomePage from "../../pageObjects/HomePage"
+import WelcomePage from "../../pageObjects/WelcomePage"
+import main from "../../fixtures/main.json"
+import transactionsData from "../../fixtures/transactionsData.json"
 
 const homePage = new HomePage()
 const customerLoginPage = new CustomerLoginPage()

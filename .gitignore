@@ -1,0 +1,8 @@
+# Dependency directory
+node_modules/
+
+cypress/videos
+cypress/screenshots
+
+results
+cypress/downloads
