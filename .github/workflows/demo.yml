@@ -29,11 +29,17 @@ jobs:
       - name: Docker start
         run: docker run -v ${PWD}:/e2e -w /e2e --rm  cypress/included:13.6.2 -s cypress/e2e/2ndResource.spec.cy.js -b chrome
 
+      - name: Publish test results
+        uses: EnricoMi/publish-unit-test-result-action@v1
+        if: always()
+        with:
+          files: "reports/*.xml"
+
       - name: Create test summary
         uses: test-summary/action@v2
         if: always()
         with:
-          paths: "reports/*.xml"
+          paths: reports/*.xml
 
       - name: Artifacts (screenshots) upload
         uses: actions/upload-artifact@v4
