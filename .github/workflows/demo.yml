@@ -29,19 +29,11 @@ jobs:
       - name: Docker start
         run: docker run -v ${PWD}:/e2e -w /e2e --rm  cypress/included:13.6.2 -s cypress/e2e/2ndResource.spec.cy.js -b chrome
 
-      # - name: Publish test results
-      #   uses: EnricoMi/publish-unit-test-result-action@v1
-      #   if: always()
-      #   with:
-      #     files: "results/*.xml"
-
-      - name: Test Report
-        uses: dorny/test-reporter@v1
-        if: success() || failure()    # run this step even if previous step failed
+      - name: Publish test results
+        uses: EnricoMi/publish-unit-test-result-action@v1
+        if: always()
         with:
-          name: JEST Tests            # Name of the check run which will be created
-          path: results/*.xml   # Path to test results
-          reporter: jest-junit        # Format of test results
+          files: "results/*.xml"
 
       - name: Create test summary
         uses: test-summary/action@v2
