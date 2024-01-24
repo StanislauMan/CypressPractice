@@ -3,7 +3,7 @@
 import CustomerLoginPage from "../../pageObjects/CustomerLoginPage"
 import HomePage from "../../pageObjects/HomePage"
 import WelcomePage from "../../pageObjects/WelcomePage"
-import main from "../../fixtures/main.json"
+import resourcesData from "../../fixtures/resourcesData.json"
 import transactionsData from "../../fixtures/transactionsData.json"
 
 const homePage = new HomePage()
@@ -14,7 +14,7 @@ const welcomePage = new WelcomePage()
 describe('4rd resource', () => {
 
     beforeEach(() => {
-        cy.visit(main.url4)
+        cy.visit(resourcesData.url4)
     })
 
     it('Customer login', () => {

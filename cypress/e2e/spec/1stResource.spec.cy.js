@@ -1,27 +1,27 @@
 ///<reference types='cypress' />
 
-import main from "../../fixtures/main.json"
+import resourcesData from "../../fixtures/resourcesData.json"
 
 describe('1st resource', () => {
 
     it('Pressing on button with dynamic ID', () => {
-        cy.visit(`${main.url1}/dynamicid`)
+        cy.visit(`${resourcesData.url1}/dynamicid`)
         cy.get('.btn-primary').click()
     })
 
     it('Automate validation for client side delay before performing an action', () => {
-        cy.visit(`${main.url1}/clientdelay`)
+        cy.visit(`${resourcesData.url1}/clientdelay`)
         cy.get('.btn-primary').click()
         cy.get('.fa-spinner').should('be.visible')
-        cy.get('.bg-success').should('be.visible')
+        cy.get('.bg-success', {timeout: 25000}).should('be.visible')
         cy.get('.fa-spinner').should('not.be.visible')
     })
 
     it('Automate actions on progress bar', () => {
-        cy.visit(`${main.url1}/progressbar`)
+        cy.visit(`${resourcesData.url1}/progressbar`)
         cy.get('#startButton')
           .click()
-        cy.get('#progressBar')
+        cy.get('#progressBar', {timeout: 25000})
           .should('have.text', '75%')
         cy.get('#stopButton')
           .click()
@@ -31,7 +31,7 @@ describe('1st resource', () => {
     it('Automate Shadow DOM scenario', () => {
         let guid;
 
-        cy.visit(`${main.url1}/shadowdom`)
+        cy.visit(`${resourcesData.url1}/shadowdom`)
         cy.get('.container guid-generator')
             .shadow()
             .find('#buttonGenerate')

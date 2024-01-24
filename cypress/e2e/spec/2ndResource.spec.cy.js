@@ -1,11 +1,13 @@
 ///<reference types='cypress' />
 
-import main from "../../fixtures/main.json"
+import resourcesData from "../../fixtures/resourcesData.json"
 
 describe('2nd resource', () => {
 
     it('Automate drag and drop action: simple', () => {
-        cy.visit(main.url2)
+        cy.visit(resourcesData.url2)
+        cy.get('.card:nth-child(5)').click()
+        cy.get('.element-group:nth-child(5) > .element-list > .menu-list > .btn:nth-child(4)').click()
         cy.get('#droppable').should('have.text', 'Drop here');
         cy.get('#draggable')
           .trigger('mousedown', {which : 1, pageX : 0, pageY : 0})
@@ -16,7 +18,9 @@ describe('2nd resource', () => {
 
 
     it('Automate drag and drop action: accept', () => {
-        cy.visit(main.url2);
+        cy.visit(resourcesData.url2);
+        cy.get('.card:nth-child(5)').click()
+        cy.get('.element-group:nth-child(5) > .element-list > .menu-list > .btn:nth-child(4)').click()
         cy.get('#droppable').should('have.text', 'Drop here');
         cy.get('#droppableExample-tab-accept')
           .click()
@@ -31,5 +35,4 @@ describe('2nd resource', () => {
           .should('have.css', 'background-color', 'rgb(70, 130, 180)')
           .and('have.text', 'Dropped!')
     })
-
 })

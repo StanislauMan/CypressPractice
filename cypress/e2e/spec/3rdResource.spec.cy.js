@@ -1,21 +1,22 @@
 ///<reference types='cypress' />
 
-import main from "../../fixtures/main.json"
+import resourcesData from "../../fixtures/resourcesData.json"
 
 describe('3rd resource', () => {
 
     before(() => {
-        cy.visit(main.url3)
+        cy.visit(resourcesData.url3)
         cy.getIFrame('#mce_0_ifr')
           .find('#tinymce')
+          .should('have.text', 'Your content goes here.')
           .clear()
     })
     
     it('Automate fill text into iframe', () => {
         cy.getIFrame('#mce_0_ifr')
           .find('#tinymce')
-          .type(`${main.text50}{selectAll}`)
-          .should('have.text', main.text50)
+          .type(`${resourcesData.text50}{selectAll}`)
+          .should('have.text', resourcesData.text50)
         cy.get('button.tox-mbtn:nth-child(4)')
           .click()
         cy.get('div[title="Background color"]')
@@ -29,5 +30,4 @@ describe('3rd resource', () => {
           .click('bottomRight')
           .should('have.css', 'background-color', 'rgb(251, 238, 184)')
     })
-
 })
